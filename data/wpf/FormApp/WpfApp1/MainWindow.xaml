@@ -5,15 +5,19 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
-        Title="MainWindow" Height="650" Width="300" Background="Gainsboro">
+        Title="MainWindow" Height="800" Width="300" Background="Gainsboro">
     <Border Background="White" BorderBrush="#F33E3E3E" BorderThickness="1" Margin="5">
         <!--#region mainGrid -->
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="30"/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
+                <RowDefinition Height="150"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="45"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="145"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
             <!--#region topButtons -->
@@ -45,20 +49,88 @@
                         <ColumnDefinition Width="49*"/>
                     </Grid.ColumnDefinitions>
                     <Label Content="Status" HorizontalAlignment="Left" VerticalAlignment="Top" Height="26" Width="42"/>
-                    <TextBox Text="" VerticalAlignment="Bottom" HorizontalAlignment="Stretch" Height="18" Margin="5,0,5,0"/>
+                    <TextBox Text="" VerticalAlignment="Bottom" HorizontalAlignment="Stretch" Height="18" Margin="5,0,5,0" IsReadOnly="True"/>
                     <Label Content="Revision" HorizontalAlignment="Right" VerticalAlignment="Top" Grid.Column="1" Height="26" Width="54" Margin="0,0,45,0"/>
-                    <TextBox Text="" VerticalAlignment="Bottom" HorizontalAlignment="Stretch" Margin="5,0,5,0" Grid.Column="1" Height="18"/>
+                    <TextBox Text="" VerticalAlignment="Bottom" HorizontalAlignment="Stretch" Margin="5,0,5,0" Grid.Column="1" Height="18" IsReadOnly="True"/>
                 </Grid>
                 <Grid Grid.Row="3">
                     <Label Content="Part Number" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-                    <TextBox Text="" VerticalAlignment="Bottom" HorizontalAlignment="Stretch" Margin="5,0,0,0"/>
+                    <TextBox Text="" VerticalAlignment="Bottom" HorizontalAlignment="Stretch" Margin="5,0,5,0" IsReadOnly="True"/>
                 </Grid>
                 <!--#endregion-->
             </Grid>
 
-            <Grid Grid.Row="2" Margin="0,10,0,0">
+            <Grid Grid.Row="2">
                 <Label Content="Raw Material" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Top"/>
             </Grid>
+            <Grid Grid.Row="3">
+                <Label Content="Material" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                <ComboBox VerticalAlignment="Bottom" Margin="5,0,5,0">
+                    <ComboBoxItem>Aluminum</ComboBoxItem>
+                    <ComboBoxItem>Silver</ComboBoxItem>
+                    <ComboBoxItem>Gold</ComboBoxItem>
+                    <ComboBoxItem>Wood</ComboBoxItem>
+                    <ComboBoxItem>Steele</ComboBoxItem>
+                    <ComboBoxItem>Leather</ComboBoxItem>
+                    <ComboBoxItem>Rubber</ComboBoxItem>
+                </ComboBox>
+            </Grid>
+            <Grid Grid.Row="4">
+                <StackPanel></StackPanel>
+                <Label Content="Manufacturing Information" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+            </Grid>
+            <Grid Grid.Row="5">
+                <StackPanel FlowDirection="LeftToRight" Orientation="Vertical" VerticalAlignment="Top" >
+                    <Label Content="Work Centres" HorizontalAlignment="Left" VerticalAlignment="Top" UseLayoutRounding="False"/>
+                    <WrapPanel HorizontalAlignment="Stretch" Margin="5,0,5,0">
+                        <CheckBox Width="140">Weld</CheckBox>
+                        <CheckBox>Assembly</CheckBox>
+                        <CheckBox Width="140">Plasma</CheckBox>
+                        <CheckBox>Laser</CheckBox>
+                        <CheckBox Width="140">Purchase</CheckBox>
+                        <CheckBox>Lathe</CheckBox>
+                        <CheckBox Width="140">Drill</CheckBox>
+                        <CheckBox>Fold</CheckBox>
+                        <CheckBox Width="140">Roll</CheckBox>
+                        <CheckBox>Saw</CheckBox>
+                    </WrapPanel>
+                </StackPanel>
+                <StackPanel VerticalAlignment="Bottom">
+                    <Label Content="Length" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                    <TextBox Text="" VerticalAlignment="Bottom" HorizontalAlignment="Stretch" Margin="5,0,5,0" />
+                </StackPanel>
+            </Grid>
+            <Grid Grid.Row="6">
+                <StackPanel>
+                <Label Content="Mass" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                    <TextBox Text="" VerticalAlignment="Bottom" HorizontalAlignment="Stretch" Margin="5,0,5,0" IsReadOnly="True"/>
+                    <Label Content="Finish" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                    <ComboBox VerticalAlignment="Bottom" Margin="5,0,5,0">
+                        <ComboBoxItem IsSelected="True">Painted</ComboBoxItem>
+                        <ComboBoxItem>Decorated</ComboBoxItem>
+                        <ComboBoxItem>Manufactured</ComboBoxItem>
+                        <ComboBoxItem>Built</ComboBoxItem>
+                        <ComboBoxItem>Processed</ComboBoxItem>
+                    </ComboBox>
+                    <Label Content="Purchase information" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                    <ComboBox VerticalAlignment="Bottom" Margin="5,0,5,0">
+                        <ComboBoxItem IsSelected="True">Painted</ComboBoxItem>
+                        <ComboBoxItem IsSelected="True">Rubber</ComboBoxItem>
+                    </ComboBox>
+                    <Label Content="Supplier Name" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                    <TextBox Text="" VerticalAlignment="Bottom" HorizontalAlignment="Stretch" Margin="5,0,5,0" />
+                    <Label Content="Supplier Code" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                    <TextBox Text="" VerticalAlignment="Bottom" HorizontalAlignment="Stretch" Margin="5,0,5,0" />
+                </StackPanel>
+            </Grid>
+            <Grid Grid.Row="7">
+                <StackPanel>
+                    <Label Content="Additional Information" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,5,0,5"/>
+                    <Label Content="Note" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                    <TextBox Text="" VerticalAlignment="Bottom" HorizontalAlignment="Stretch" Margin="5,0,5,0" />
+                </StackPanel>
+            </Grid>
+
 
         </Grid>
         <!--#endregion-->
