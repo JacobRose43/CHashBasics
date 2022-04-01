@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
-        Title="MainWindow" Height="800" Width="300" Background="Gainsboro">
-    <Border Background="White" BorderBrush="#F33E3E3E" BorderThickness="1" Margin="5">
+        Title="FormApp" Height="800" Width="300" Background="#3FDCDCDC" WindowStyle="SingleBorderWindow" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+    <Border Background="#7FFFFFFF" BorderBrush="#F33E3E3E" BorderThickness="1" Margin="5">
         <!--#region mainGrid -->
         <Grid>
             <Grid.RowDefinitions>
@@ -102,7 +102,7 @@
             </Grid>
             <Grid Grid.Row="6">
                 <StackPanel>
-                <Label Content="Mass" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                    <Label Content="Mass" HorizontalAlignment="Left" VerticalAlignment="Top"/>
                     <TextBox Text="" VerticalAlignment="Bottom" HorizontalAlignment="Stretch" Margin="5,0,5,0" IsReadOnly="True"/>
                     <Label Content="Finish" HorizontalAlignment="Left" VerticalAlignment="Top"/>
                     <ComboBox VerticalAlignment="Bottom" Margin="5,0,5,0">
