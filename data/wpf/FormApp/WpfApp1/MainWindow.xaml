@@ -5,16 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
-        Title="FormApp" Height="800" Width="300" Background="#3FDCDCDC" WindowStyle="SingleBorderWindow" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+        Title="FormApp" Height="800" Width="300" Background="#3FDCDCDC" WindowStyle="SingleBorderWindow" ResizeMode="CanResize" WindowStartupLocation="CenterScreen">
     <Border Background="#7FFFFFFF" BorderBrush="#F33E3E3E" BorderThickness="1" Margin="5">
         <!--#region mainGrid -->
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="30"/>
+                <RowDefinition Height="Auto"/>
                 <RowDefinition Height="150"/>
-                <RowDefinition Height="30"/>
+                <RowDefinition Height="Auto"/>
                 <RowDefinition Height="45"/>
-                <RowDefinition Height="30"/>
+                <RowDefinition Height="Auto"/>
                 <RowDefinition Height="145"/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
@@ -82,7 +82,7 @@
             <Grid Grid.Row="5">
                 <StackPanel FlowDirection="LeftToRight" Orientation="Vertical" VerticalAlignment="Top" >
                     <Label Content="Work Centres" HorizontalAlignment="Left" VerticalAlignment="Top" UseLayoutRounding="False"/>
-                    <WrapPanel HorizontalAlignment="Stretch" Margin="5,0,5,0">
+                    <WrapPanel HorizontalAlignment="Stretch" Margin="5,0,5,0" Orientation="Horizontal">
                         <CheckBox Width="140">Weld</CheckBox>
                         <CheckBox>Assembly</CheckBox>
                         <CheckBox Width="140">Plasma</CheckBox>
