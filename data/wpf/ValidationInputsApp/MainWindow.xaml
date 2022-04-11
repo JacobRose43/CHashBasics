@@ -8,7 +8,7 @@
         Title="MainWindow" Height="450" Width="800">
     <Grid>
         <GroupBox HorizontalAlignment="Center" VerticalAlignment="Center" Header="Math">
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Width="390">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
                 <TextBox x:Name="number1Tbox"  TextWrapping="Wrap" TextChanged="number1Tbox_TextChanged" Height="15" Width="100" Margin="15,0,15,0"/>
                 <TextBox x:Name="number2Tbox" TextWrapping="Wrap" TextChanged="number2Tbox_TextChanged" Height="15" Width="100" Margin="15,0,15,0"/>
                 <Label Content="*"  Height="33" Width="17" Margin="15,0,15,0"/>
