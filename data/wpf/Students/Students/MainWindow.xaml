@@ -16,7 +16,9 @@
 
             <!--#region List -->
             <GroupBox Header="List" Grid.Column="0">
-                <ListBox x:Name="List_ListBox" BorderBrush="{x:Null}" Background="White" Foreground="Black" SelectionChanged="List_ListBox_SelectionChanged" HorizontalAlignment="Stretch"/>
+                <ListBox x:Name="List_ListBox" BorderBrush="{x:Null}" Background="White" Foreground="Black" SelectionChanged="List_ListBox_SelectionChanged" HorizontalAlignment="Stretch">
+                    
+                </ListBox>
             </GroupBox>
             <!--#endregion-->
 
@@ -70,8 +72,7 @@
             <GroupBox Header="Display" Grid.Column="2">
                 <StackPanel>
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" VerticalAlignment="Top">
-                        <Label x:Name="Firstname_Label" Content="Imie"/>
-                        <Label x:Name="Lastname_Label" Content="Nazwisko"/>
+                        <TextBlock x:Name="Name_TextBlock"></TextBlock>
                     </StackPanel>
                     <StackPanel Margin="25,25,25,25">
                         <Image x:Name="Image_Display" Width="330" Height="315" MaxWidth="332" MaxHeight="315"/>

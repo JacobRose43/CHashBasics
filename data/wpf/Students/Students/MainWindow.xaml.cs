@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Microsoft.Win32;
 
+
 namespace Students
 {
     /// <summary>
@@ -32,12 +33,13 @@ namespace Students
                 Filter = "Image Files | *.jpg; *.jpeg",
                 Title = "Open Graphic File"
             };
+            Image_Form.Source = null;
         }
 
         private void Image_Btn_Click(object sender, RoutedEventArgs e)
         {
             bool? result = openFileDialog.ShowDialog();
-            if (result.HasValue || result.Value)
+            if (result.HasValue && result.Value)
             {
                 Image picutre = new Image
                 {
@@ -71,7 +73,7 @@ namespace Students
 
         private void Form_submit_Btn_Click(object sender, RoutedEventArgs e)
         {
-            if (!string.IsNullOrWhiteSpace(Firstname_Input.Text) && !string.IsNullOrWhiteSpace(Lastname_Input.Text) && !string.IsNullOrEmpty(Image_Form.Source.ToString()))
+            if (!string.IsNullOrWhiteSpace(Firstname_Input.Text) && !string.IsNullOrWhiteSpace(Lastname_Input.Text) && !(Image_Form.Source==null))
             {
                 StackPanel sp = new StackPanel
                 {
@@ -94,14 +96,29 @@ namespace Students
                 });
 
                 List_ListBox.Items.Add(sp);
+
+                //Create stack panel inside ListBox, as item, putting data in stack panel
             }
         }
 
         private void List_ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            /*
-            Firstname_Label.Content = 
-            */
+            
+
+                Visual imageChild = (Visual)VisualTreeHelper.GetChild((DependencyObject)List_ListBox.SelectedItem, 0);
+            // get first children 
+                Visual textBoxChild = (Visual)VisualTreeHelper.GetChild((DependencyObject)List_ListBox.SelectedItem, 1);
+            // get second children 
+
+                Image picture = (Image)imageChild;
+                TextBlock text = (TextBlock)textBoxChild;
+            // get it as Image and TextBlock
+                
+                Image_Display.Source = (picture as Image).Source;
+                Name_TextBlock.Text = (text as TextBlock).Text;
+            // Assignment
+
+
         }
     }
 }
