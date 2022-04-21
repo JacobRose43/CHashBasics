@@ -71,8 +71,8 @@
             <!--#region Display -->
             <GroupBox Header="Display" Grid.Column="2">
                 <StackPanel>
-                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" VerticalAlignment="Top">
-                        <TextBlock x:Name="Name_TextBlock"></TextBlock>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Top">
+                        <TextBlock x:Name="Name_TextBlock" Margin="0,25,0,0"></TextBlock>
                     </StackPanel>
                     <StackPanel Margin="25,25,25,25">
                         <Image x:Name="Image_Display" Width="330" Height="315" MaxWidth="332" MaxHeight="315"/>

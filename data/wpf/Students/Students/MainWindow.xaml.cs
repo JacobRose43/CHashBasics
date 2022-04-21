@@ -92,10 +92,18 @@ namespace Students
 
                 sp.Children.Add(new TextBlock
                 {
+                    HorizontalAlignment = HorizontalAlignment.Center,
+                    VerticalAlignment = VerticalAlignment.Center,
+                    Margin = new Thickness(5, 0, 5, 0),
                     Text = $"{Firstname_Input.Text} {Lastname_Input.Text}"
-                });
+                }); ;
 
                 List_ListBox.Items.Add(sp);
+
+                Firstname_Input.Text = String.Empty;
+                Lastname_Input.Text = String.Empty;
+                Image_Form.Source = null;
+                Firstname_Input.Focus();
 
                 //Create stack panel inside ListBox, as item, putting data in stack panel
             }
