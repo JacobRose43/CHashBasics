@@ -186,7 +186,7 @@ namespace CalcApp
 
         private void FirstNumber_Input_TextChanged(object sender, TextChangedEventArgs e)
         {
-            
+
         }
 
         private void SecondNumber_Input_TextChanged(object sender, TextChangedEventArgs e)
