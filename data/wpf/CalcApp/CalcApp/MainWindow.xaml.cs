@@ -24,7 +24,6 @@ namespace CalcApp
         public MainWindow()
         {
             InitializeComponent();
-
         }
 
         static StackPanel CreateListItem(double number1, double number2, double result, string mathOption)
@@ -115,6 +114,33 @@ namespace CalcApp
             }
         }
 
+        public static void AllowValue(TextBox textBox, KeyEventArgs e)
+        {
+            if (int.TryParse(e.Key.ToString().Substring(1), out _) ||
+                (e.Key.ToString() == "OemPeriod") || (e.Key.ToString() == "OemMinus"))
+            {
+                if (textBox.Text.Count(f => f == '.').Equals(0))
+                {
+                    e.Handled = false;
+                }
+                else
+                {
+                    if ((e.Key.ToString() == "OemPeriod") || (e.Key.ToString() == "OemMinus"))
+                    {
+                        e.Handled = true;
+                    }
+                    else
+                    {
+                        e.Handled = false;
+                    }
+                }
+            }
+            else
+            {
+                e.Handled = true;
+            }
+        }
+
         private void Plus_Btn_Click(object sender, RoutedEventArgs e)
         {
             if (double.TryParse(FirstNumber_Input.Text, out double number1) && double.TryParse(SecondNumber_Input.Text, out double number2))
@@ -141,7 +167,7 @@ namespace CalcApp
         {
             if (double.TryParse(FirstNumber_Input.Text, out double number1) && double.TryParse(SecondNumber_Input.Text, out double number2))
             {
-                double result = number1 * number2;
+                double result = Math.Round(number1 / number2, 5);
                 Result_TextBlock.Text = result.ToString();
 
                 History_ListBox.Items.Add(CreateListItem(number1, number2, result, "*"));
@@ -152,9 +178,9 @@ namespace CalcApp
         {
             if (double.TryParse(FirstNumber_Input.Text, out double number1) && double.TryParse(SecondNumber_Input.Text, out double number2))
             {
-                if (number1 > 0 && number2 > 0)
+                if ((number1 != 0) && (number2 != 0))
                 {
-                    double result = Math.Round(number1 / number2, 3);
+                    double result = Math.Round(number1 / number2, 5);
                     Result_TextBlock.Text = result.ToString();
 
                     History_ListBox.Items.Add(CreateListItem(number1, number2, result, "/"));
@@ -180,26 +206,38 @@ namespace CalcApp
                 SecondNumber_Input.Text = number2.Text;
                 Result_TextBlock.Text = result.Text;
 
+#pragma warning disable CS8604 // Possible null reference argument.
                 ChangeColor(sign.Content.ToString());
+#pragma warning restore CS8604 // Possible null reference argument.
             }
-        }
-
-        private void FirstNumber_Input_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
-
-        private void SecondNumber_Input_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
         }
 
         private void Reset_Btn_Click(object sender, RoutedEventArgs e)
         {
             History_ListBox.Items.Clear();
-            FirstNumber_Input.Text = "";
-            SecondNumber_Input.Text = "";
+            FirstNumber_Input.Text = String.Empty;
+            SecondNumber_Input.Text = String.Empty;
+            Result_TextBlock.Text = String.Empty;
             FirstNumber_Input.Focus();
+        }
+
+        private void Clear_Btn_Click(object sender, RoutedEventArgs e)
+        {
+            FirstNumber_Input.Text = String.Empty;
+            SecondNumber_Input.Text = String.Empty;
+            Result_TextBlock.Text = String.Empty;
+            ChangeColor(String.Empty);
+            FirstNumber_Input.Focus();
+        }
+
+        private void FirstNumber_Input_KeyDown(object sender, KeyEventArgs e)
+        {
+            AllowValue(FirstNumber_Input, e);
+        }
+
+        private void SecondNumber_Input_KeyDown(object sender, KeyEventArgs e)
+        {
+            AllowValue(SecondNumber_Input, e);
         }
     }
 }

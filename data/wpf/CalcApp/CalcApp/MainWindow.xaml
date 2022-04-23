@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CalcApp"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800" Padding="2,2,2,2" FontFamily="Yu Gothic UI">
+        Title="MainWindow" Height="450" Width="800" Padding="2,2,2,2" FontFamily="Yu Gothic UI" ResizeMode="CanMinimize">
     <GroupBox Header="CalcApp">
         <Grid>
             <Grid.ColumnDefinitions>
@@ -17,9 +17,9 @@
                 <StackPanel>
                     <StackPanel>
                         <Label Content="First Input" Margin="5,10,5,0" Padding="0,0,0,0"/>
-                        <TextBox x:Name="FirstNumber_Input" Margin="5,5,5,0" Padding="5,0,5,0" TextChanged="FirstNumber_Input_TextChanged"/>
+                        <TextBox x:Name="FirstNumber_Input" Margin="5,5,5,0" Padding="5,0,5,0" KeyDown="FirstNumber_Input_KeyDown"/>
                         <Label Content="Second Input" Margin="5,10,5,0" Padding="0,0,0,0"/>
-                        <TextBox x:Name="SecondNumber_Input" Margin="5,5,5,0" Padding="5,0,5,0" TextChanged="SecondNumber_Input_TextChanged"/>
+                        <TextBox x:Name="SecondNumber_Input" Margin="5,5,5,0" Padding="5,0,5,0" KeyDown="SecondNumber_Input_KeyDown"/>
                         <Label Content="Result" Margin="5,30,5,0" Padding="0,0,0,0"/>
                         <TextBlock x:Name="Result_TextBlock" Margin="5,5,5,0" Padding="5,0,5,0" Background="White" Foreground="Black"/>
                     </StackPanel>
@@ -29,14 +29,15 @@
                         <Button x:Name="Multip_Btn" Content="*" Width="25" Height="25" Margin="25,0,25,0" Background="WhiteSmoke" Foreground="DarkGray" BorderBrush="#FF9E9E9E" FontWeight="Normal" Click="Multip_Btn_Click"/>
                         <Button x:Name="Division_Btn" Content="/" Width="25" Height="25" Margin="25,0,25,0" Background="WhiteSmoke" Foreground="DarkGray" BorderBrush="#FF9E9E9E" FontWeight="Normal" Click="Division_Btn_Click"/>
                     </StackPanel>
-                    <StackPanel Margin="0,60,0,0">
-                        <Button x:Name="Reset_Btn" Content="Reset" Background="WhiteSmoke" Foreground="DarkGray" Width="250" BorderBrush="#FF9E9E9E" Click="Reset_Btn_Click"/>
+                    <StackPanel Margin="0,50,0,0">
+                        <Button x:Name="Clear_Btn" Content="Clear" Background="WhiteSmoke" Foreground="DarkGray" Width="250" BorderBrush="#FF9E9E9E" Margin="0,0,0,5" Click="Clear_Btn_Click"/>
+                        <Button x:Name="Reset_Btn" Content="Reset" Background="WhiteSmoke" Foreground="DarkGray" Width="250" BorderBrush="#FF9E9E9E" Click="Reset_Btn_Click" Margin="0,5,0,0"/>
                     </StackPanel>
                 </StackPanel>
             </GroupBox>
 
             <GroupBox Header="List of Calculations" Grid.Column="0">
-                <ListBox x:Name="History_ListBox" MouseDoubleClick="History_ListBox_MouseDoubleClick">
+                <ListBox x:Name="History_ListBox" MouseDoubleClick="History_ListBox_MouseDoubleClick" Padding="5,5,5,5" Grid.IsSharedSizeScope="True" RenderTransformOrigin="0.5,0.5">
                     <!--<ListBoxItem></ListBoxItem>-->
                 </ListBox>
             </GroupBox>
