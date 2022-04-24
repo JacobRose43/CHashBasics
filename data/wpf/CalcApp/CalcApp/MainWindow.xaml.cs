@@ -118,6 +118,15 @@ namespace CalcApp
             }
         }
 
+        public void BackColor()
+        {
+            if (Plus_Btn.Foreground == Brushes.WhiteSmoke || Minus_Btn.Foreground == Brushes.WhiteSmoke ||
+                Multip_Btn.Foreground == Brushes.WhiteSmoke || Division_Btn.Foreground == Brushes.WhiteSmoke)
+            {
+                ChangeColor(String.Empty);
+            }
+        }
+
         public static void AllowValue(TextBox textBox, KeyEventArgs e)
         {
             if (int.TryParse(e.Key.ToString().Substring(1), out _) ||
@@ -165,6 +174,8 @@ namespace CalcApp
                 SecondNumber_Input.Text = String.Empty;
                 FirstNumber_Input.Focus();
             }
+
+            BackColor();
         }
 
         private void Minus_Btn_Click(object sender, RoutedEventArgs e)
@@ -187,40 +198,37 @@ namespace CalcApp
                 SecondNumber_Input.Text = String.Empty;
                 FirstNumber_Input.Focus();
             }
+
+            BackColor();
         }
 
         private void Multip_Btn_Click(object sender, RoutedEventArgs e)
         {
             if (double.TryParse(FirstNumber_Input.Text, out double number1) && double.TryParse(SecondNumber_Input.Text, out double number2))
             {
-                double result = Math.Round(number1 / number2, 2);
-                Result_TextBlock.Text = result.ToString();
-
-                History_ListBox.Items.Add(CreateListItem(number1, number2, result, "*"));
-            }
-            else if (!double.TryParse(SecondNumber_Input.Text, out _))
-            {
-                SecondNumber_Input.Text = String.Empty;
-                SecondNumber_Input.Focus();
-            }
-            else
-            {
-                FirstNumber_Input.Text = String.Empty;
-                SecondNumber_Input.Text = String.Empty;
-                FirstNumber_Input.Focus();
-            }
-        }
-
-        private void Division_Btn_Click(object sender, RoutedEventArgs e)
-        {
-            if (double.TryParse(FirstNumber_Input.Text, out double number1) && double.TryParse(SecondNumber_Input.Text, out double number2))
-            {
-                if ((number1 != 0) && (number2 != 0))
+                if (number1 != 0 && number2 != 0)
                 {
-                    double result = Math.Round(number1 / number2, 2);
+                    double result = Math.Round(number1 * number2, 2);
                     Result_TextBlock.Text = result.ToString();
-
-                    History_ListBox.Items.Add(CreateListItem(number1, number2, result, "/"));
+                    History_ListBox.Items.Add(CreateListItem(number1, number2, result, "*"));
+                }
+                else if (number1 == 0 && number2 == 0)
+                {
+                    double result = number1;
+                    Result_TextBlock.Text = result.ToString();
+                    History_ListBox.Items.Add(CreateListItem(number1, number2, result, "*"));
+                }
+                else if (number2 == 0)
+                {
+                    double result = number2;
+                    Result_TextBlock.Text = result.ToString();
+                    History_ListBox.Items.Add(CreateListItem(number1, number2, result, "*"));
+                }
+                else if (number1 == 0)
+                {
+                    double result = number1;
+                    Result_TextBlock.Text = result.ToString();
+                    History_ListBox.Items.Add(CreateListItem(number1, number2, result, "*"));
                 }
             }
             else if (!double.TryParse(SecondNumber_Input.Text, out _))
@@ -234,6 +242,47 @@ namespace CalcApp
                 SecondNumber_Input.Text = String.Empty;
                 FirstNumber_Input.Focus();
             }
+
+            BackColor();
+        }
+
+        private void Division_Btn_Click(object sender, RoutedEventArgs e)
+        {
+            if (double.TryParse(FirstNumber_Input.Text, out double number1) && double.TryParse(SecondNumber_Input.Text, out double number2))
+            {
+                if ((number1 != 0) && (number2 != 0))
+                {
+                    double result = Math.Round(number1 / number2, 2);
+                    Result_TextBlock.Text = result.ToString();
+
+                    History_ListBox.Items.Add(CreateListItem(number1, number2, result, "/"));
+                }
+                else if (number1 != 0)
+                {
+                    SecondNumber_Input.Text = String.Empty;
+                    SecondNumber_Input.Focus();
+                }
+                else
+                {
+                    FirstNumber_Input.Text = String.Empty;
+                    SecondNumber_Input.Text = String.Empty;
+                    FirstNumber_Input.Focus();
+                }
+            }
+            else if (!double.TryParse(SecondNumber_Input.Text, out _))
+            {
+
+                SecondNumber_Input.Text = String.Empty;
+                SecondNumber_Input.Focus();
+            }
+            else
+            {
+                FirstNumber_Input.Text = String.Empty;
+                SecondNumber_Input.Text = String.Empty;
+                FirstNumber_Input.Focus();
+            }
+
+            BackColor();
         }
 
         private void History_ListBox_MouseDoubleClick(object sender, MouseButtonEventArgs e)
