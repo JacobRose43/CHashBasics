@@ -83,33 +83,37 @@ namespace CalcApp
 
         public void ChangeColor(string mathContent)
         {
+            Color myColor = new Color();
+            myColor = Color.FromRgb(113, 113, 113);
+            Brush myBrush = new SolidColorBrush(myColor);
+
             Plus_Btn.Background = Brushes.WhiteSmoke;
-            Plus_Btn.Foreground = Brushes.DarkGray;
+            Plus_Btn.Foreground = myBrush;
             Minus_Btn.Background = Brushes.WhiteSmoke;
-            Minus_Btn.Foreground = Brushes.DarkGray;
+            Minus_Btn.Foreground = myBrush;
             Multip_Btn.Background = Brushes.WhiteSmoke;
-            Multip_Btn.Foreground = Brushes.DarkGray;
+            Multip_Btn.Foreground = myBrush;
             Division_Btn.Background = Brushes.WhiteSmoke;
-            Division_Btn.Foreground = Brushes.DarkGray;
+            Division_Btn.Foreground = myBrush;
 
             if (mathContent == "+")
             {
-                Plus_Btn.Background = Brushes.DarkGray;
+                Plus_Btn.Background = myBrush;
                 Plus_Btn.Foreground = Brushes.WhiteSmoke;
             }
             if (mathContent == "-")
             {
-                Minus_Btn.Background = Brushes.DarkGray;
+                Minus_Btn.Background = myBrush;
                 Minus_Btn.Foreground = Brushes.WhiteSmoke;
             }
             if (mathContent == "*")
             {
-                Multip_Btn.Background = Brushes.DarkGray;
+                Multip_Btn.Background = myBrush;
                 Multip_Btn.Foreground = Brushes.WhiteSmoke;
             }
             if (mathContent == "/")
             {
-                Division_Btn.Background = Brushes.DarkGray;
+                Division_Btn.Background = myBrush;
                 Division_Btn.Foreground = Brushes.WhiteSmoke;
             }
         }
@@ -150,6 +154,17 @@ namespace CalcApp
 
                 History_ListBox.Items.Add(CreateListItem(number1, number2, result, "+"));
             }
+            else if (!double.TryParse(SecondNumber_Input.Text, out _))
+            {
+                SecondNumber_Input.Text = String.Empty;
+                SecondNumber_Input.Focus();
+            }
+            else
+            {
+                FirstNumber_Input.Text = String.Empty;
+                SecondNumber_Input.Text = String.Empty;
+                FirstNumber_Input.Focus();
+            }
         }
 
         private void Minus_Btn_Click(object sender, RoutedEventArgs e)
@@ -161,16 +176,38 @@ namespace CalcApp
 
                 History_ListBox.Items.Add(CreateListItem(number1, number2, result, "-"));
             }
+            else if (!double.TryParse(SecondNumber_Input.Text, out _))
+            {
+                SecondNumber_Input.Text = String.Empty;
+                SecondNumber_Input.Focus();
+            }
+            else
+            {
+                FirstNumber_Input.Text = String.Empty;
+                SecondNumber_Input.Text = String.Empty;
+                FirstNumber_Input.Focus();
+            }
         }
 
         private void Multip_Btn_Click(object sender, RoutedEventArgs e)
         {
             if (double.TryParse(FirstNumber_Input.Text, out double number1) && double.TryParse(SecondNumber_Input.Text, out double number2))
             {
-                double result = Math.Round(number1 / number2, 5);
+                double result = Math.Round(number1 / number2, 2);
                 Result_TextBlock.Text = result.ToString();
 
                 History_ListBox.Items.Add(CreateListItem(number1, number2, result, "*"));
+            }
+            else if (!double.TryParse(SecondNumber_Input.Text, out _))
+            {
+                SecondNumber_Input.Text = String.Empty;
+                SecondNumber_Input.Focus();
+            }
+            else
+            {
+                FirstNumber_Input.Text = String.Empty;
+                SecondNumber_Input.Text = String.Empty;
+                FirstNumber_Input.Focus();
             }
         }
 
@@ -180,11 +217,22 @@ namespace CalcApp
             {
                 if ((number1 != 0) && (number2 != 0))
                 {
-                    double result = Math.Round(number1 / number2, 5);
+                    double result = Math.Round(number1 / number2, 2);
                     Result_TextBlock.Text = result.ToString();
 
                     History_ListBox.Items.Add(CreateListItem(number1, number2, result, "/"));
                 }
+            }
+            else if (!double.TryParse(SecondNumber_Input.Text, out _))
+            {
+                SecondNumber_Input.Text = String.Empty;
+                SecondNumber_Input.Focus();
+            }
+            else
+            {
+                FirstNumber_Input.Text = String.Empty;
+                SecondNumber_Input.Text = String.Empty;
+                FirstNumber_Input.Focus();
             }
         }
 
